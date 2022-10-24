@@ -10,7 +10,7 @@ async function Weather(city,chat){
 
     console.log(data)
 
-    Temp(data,chat)
+    await Temp(data,chat)
 }
 
 function Temp(data, chat) {
@@ -56,7 +56,7 @@ bot.addListener("message", (msg) => {
     const text = msg.text
 
     if(text == "/start"){
-        bot.sendMessage(chat,'Добро пожаловать! Что-бы посмотреть погоду напишите "/city [Название города]"')
+        bot.sendMessage(chat,'Добро пожаловать! Что-бы подписаться на разссылку погоды напишите "/push[Название города]"')
     }
     if(text.indexOf("/city") == 0){
         const city = text.slice(6)
