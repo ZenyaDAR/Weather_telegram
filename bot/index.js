@@ -46,7 +46,7 @@ bot.on('message', async (msg) => {
                 for (const re of res) {
                     if (re.user_id == msg.from.id) {
                         if (re.user_city !== undefined) {
-                            await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${re.user_city}&appid=6503e14e0dea2029c229dbe8d70f781e&units=metric&lang=ru`)
+                            await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${re.user_city}&appid=${process.env.TOKEN_WEATHER}&units=metric&lang=ru`)
                                 .then(app => app.json())
                                 .then(async wes => {
                                     await bot.sendMessage(chatid, `Погода в городе *${wes.name} ${wes.sys.country}*:\n\n🌡️*Температура*🌡️: ${Math.floor(wes.main.temp)}C\n\n💨*Ветер*💨: ${wes.wind.speed} м/с порывы до ${wes.wind.gust} м/с\n\n☀️️️*Погода*☀️: ${wes.weather[0].description}\n\n🌥️*Облачность*🌥️: ${wes.clouds.all}%`, {parse_mode: 'Markdown'})
@@ -66,7 +66,7 @@ bot.on('message', async (msg) => {
                 for (const re of res) {
                     if (re.user_id == msg.from.id) {
                         if (re.user_city !== undefined) {
-                            await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${re.user_city}&appid=6503e14e0dea2029c229dbe8d70f781e&units=metric&lang=ru`)
+                            await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${re.user_city}&appid=${process.env.TOKEN_WEATHER}&units=metric&lang=ru`)
                                 .then(app => app.json())
                                 .then(async wes => {
 
@@ -202,7 +202,7 @@ bot.on('callback_query', async evn => {
                 for (const re of res) {
                     if (re.user_id == evn.from.id) {
                         if (re.user_city !== undefined) {
-                            await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${re.user_city}&appid=6503e14e0dea2029c229dbe8d70f781e&units=metric&lang=ru`)
+                            await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${re.user_city}&appid=${process.env.TOKEN_WEATHER}&units=metric&lang=ru`)
                                 .then(app => app.json())
                                 .then(async wes => {
                                     await bot.sendMessage(evn.from.id, `Погода в городе *${wes.name} ${wes.sys.country}*:\n\n🌡️*Температура*🌡️: ${wes.main.temp}C чувствуется на ${wes.main.feels_like}C\n\n💨*Ветер*💨: ${wes.wind.speed} м/с\n\n☀️*Погода*☀️: ${wes.weather[0].description}\n\n🌥️*Облачность*🌥️: ${wes.clouds.all}%`, {parse_mode: 'Markdown'})
