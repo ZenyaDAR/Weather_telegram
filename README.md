@@ -22,7 +22,7 @@ To use the Telegram_Weather project, follow the steps below:
 1. Clone the repository:
 
 ```
-git clone https://github.com/your_username/Telegram_Weather.git
+git clone https://github.com/ZenyaDAR/Weather_telegram.git
 ```
 
 2. Install the project dependencies:
